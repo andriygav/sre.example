@@ -11,6 +11,42 @@ services:
       options:
         max-size: "10m"
         max-file: "1"
+
+  jenkins:
+    build:
+      context: ${PWD}
+      dockerfile: ${PWD}/deploy/Dockerfile.controller
+    restart: always
+    privileged: true
+    user: root
+    ports:
+      - "8080:8080"
+      - "50000:50000"
+    volumes:
+      - /mnt/data/jenkins-data:/var/jenkins_home
+      - ${PWD}/deploy/casc-configs:/var/casc_configs
+      - /var/run/docker.sock:/var/run/docker.sock
+    environment:
+      - CASC_JENKINS_CONFIG=/var/casc_configs
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "1"
+
+  docker-daemon:
+    image: docker:dind
+    restart: always
+    privileged: true
+    environment:
+      DOCKER_TLS_CERTDIR: ""
+    volumes:
+      - /mnt/data/docker-data:/var/lib/docker
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "1"
       
   nginx:
     image: nginx:alpine
