@@ -1,2 +1,1 @@
-# sre.allOne
-An example of setup: jenkins &amp; nexus configuration
+# An example of setup: jenkins & nexus configuration
