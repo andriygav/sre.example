@@ -43,6 +43,7 @@ services:
     image: docker:dind
     restart: always
     privileged: true
+    command: ["--insecure-registry", "nexus.lcl"]
     environment:
       DOCKER_TLS_CERTDIR: ""
     volumes:
