@@ -19,6 +19,8 @@ services:
     restart: always
     privileged: true
     user: root
+    extra_hosts:
+      - "bitbucket.lcl=<IP>"
     ports:
       - "8080:8080"
       - "50000:50000"
