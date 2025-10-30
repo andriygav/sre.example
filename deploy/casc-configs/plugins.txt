@@ -1,0 +1,17 @@
+git:5.7.0
+docker-plugin:1274.vc0203fdf2e74
+workflow-aggregator:608.v67378e9d3db_1
+configuration-as-code:1985.vdda_32d0c4ea_b_
+job-dsl:1.93
+active-directory:2.40
+mstest:1.0.5
+ansicolor:1.0.6
+pipeline-stage-view:2.38
+docker-workflow:621.va_73f881d9232
+ansible:524.v9fa_a_4c989224
+pipeline-utility-steps:2.19.0
+cloudbees-bitbucket-branch-source:887.va_d359b_3d2d8d
+atlassian-bitbucket-server-integration:4.2.0
+bitbucket:250.v8032f588d8a_c
+blueocean-bitbucket-pipeline:1.27.10
+blueocean:1.27.10
