@@ -26,6 +26,12 @@ jenkins:
           cpuPeriod: 0
           cpuQuota: 0
           cpus: "0.5"
+          extraHosts:
+          - "bitbucket.lcl:<IP>"
+          - "nexus.lcl:<IP>"
+          extraHostsString: |-
+            bitbucket.lcl:<IP>
+            nexus.lcl:<IP>
           image: "nexus.lcl/jenkins-agent:main"
           memoryLimit: 1024
           network: "host"
