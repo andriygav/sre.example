@@ -21,6 +21,8 @@ services:
     user: root
     extra_hosts:
       - "bitbucket.lcl=<IP>"
+      - "nexus.lcl=<IP>"
+      - "jenkins.lcl=<IP>"
     ports:
       - "8080:8080"
       - "50000:50000"
@@ -45,6 +47,8 @@ services:
       DOCKER_TLS_CERTDIR: ""
     volumes:
       - /mnt/data/docker-data:/var/lib/docker
+    extra_hosts:
+      - "nexus.lcl=<IP>"
     logging:
       driver: "json-file"
       options:
