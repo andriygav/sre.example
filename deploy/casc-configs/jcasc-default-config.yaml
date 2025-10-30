@@ -26,6 +26,8 @@ jenkins:
           cpuPeriod: 0
           cpuQuota: 0
           cpus: "0.5"
+          environment:
+          - "GIT_SSL_NO_VERIFY=true"
           extraHosts:
           - "bitbucket.lcl:<IP>"
           - "nexus.lcl:<IP>"
