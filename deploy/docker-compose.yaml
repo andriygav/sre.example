@@ -14,7 +14,7 @@ services:
 
   jenkins:
     build:
-      context: ${PWD}
+      context: ${PWD}/deploy/casc-configs
       dockerfile: ${PWD}/deploy/Dockerfile.controller
     restart: always
     privileged: true
