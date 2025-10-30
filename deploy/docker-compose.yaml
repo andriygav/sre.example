@@ -1,0 +1,34 @@
+name: example
+
+services:
+  nexus:
+    image: sonatype/nexus3:3.79.1-java17-alpine
+    restart: always
+    volumes:
+      - /mnt/nexus/nexus-data:/nexus-data
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "1"
+      
+  nginx:
+    image: nginx:alpine
+    restart: always
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://nginx/health"]
+      interval: 10s
+      timeout: 2s
+      retries: 5
+    ports:
+      - 80:80
+      - 443:443
+    volumes:
+      - ${PWD}/deploy/nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+      - ${PWD}/deploy/nginx/ssl/cert.pem:/etc/nginx/ssl/cert.pem:ro
+      - ${PWD}/deploy/nginx/ssl/key.pem:/etc/nginx/ssl/key.pem:ro
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "1"
