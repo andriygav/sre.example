@@ -8,11 +8,7 @@ credentials:
           scope: GLOBAL
           username: "admin"
           usernameSecret: true
-jobs: []
 jenkins:
-  authorizationStrategy:
-    loggedInUsersCanDoAnything:
-      allowAnonymousRead: false
   clouds:
   - docker:
       containerCap: 5
@@ -44,14 +40,10 @@ jenkins:
           idleMinutes: 3
   crumbIssuer:
     standard:
-      excludeClientIPFromCrumb: true
+      excludeClientIPFromCrumb: false
   disableRememberMe: false
-  disabledAdministrativeMonitors:
-  - "hudson.util.DoubleLaunchChecker"
   labelAtoms:
   - name: "built-in"
-  - name: "jenkins-jenkins-agent"
-  - name: "jenkins-k8s"
   markupFormatter: "plainText"
   mode: NORMAL
   nodeMonitors:
@@ -102,8 +94,9 @@ security:
     allowedOnController: false
   gitHostKeyVerificationConfiguration:
     sshHostKeyVerificationStrategy: "knownHostsFileVerificationStrategy"
+  globalJobDslSecurityConfiguration:
+    useScriptSecurity: true
   scriptApproval:
-    approvedSignatures: []
     forceSandbox: false
 unclassified:
   ansiColorBuildWrapper:
@@ -201,7 +194,6 @@ unclassified:
     storage: "file"
   location:
     adminAddress: "address not configured yet <nobody@nowhere>"
-    url: "https://jenkins.lcl/"
   mailer:
     charset: "UTF-8"
     useSsl: false
