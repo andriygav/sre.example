@@ -1,7 +1,7 @@
 FROM jenkins/jenkins:2.521-jdk21
 
 # skip the setup wizard
-ENV JAVA_OPTS "-Djenkins.install.runSetupWizard=false"
+ENV JAVA_OPTS "-Djenkins.install.runSetupWizard=false -Djdk.internal.httpclient.disableHostnameVerification=true"
 
 # install plugins
 COPY plugins.txt /usr/share/jenkins/ref/plugins.txt
